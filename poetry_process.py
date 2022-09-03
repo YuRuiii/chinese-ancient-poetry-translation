@@ -14,8 +14,10 @@ def poetry_data_process():
                 translation = data["fanyi"]
                 content_lines = content.split("\n")
                 translation_lines = translation.split("\n")
+                if translation_lines[0] == "注释":
+                    continue
                 for idx in range(len(content_lines)):
-                    if content_lines[idx] != "" and translation_lines[idx+1] != "":
+                    if content_lines[idx] != "" and translation_lines[idx+1] != "" and translation_lines[idx+1][0] != '(':
                         result_list.append([content_lines[idx], translation_lines[idx+1]])
                 # print(file_name)
         except:
